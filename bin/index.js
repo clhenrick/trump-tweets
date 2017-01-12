@@ -19,12 +19,25 @@ const tweetStream = new TwitterPosts({
   retweets: false
 });
 
+function sqlifyArray(imgArray) {
+  // Arrays in PostgreSQL are annoying, need to be passed as a string like:
+  // ARRAY['a', 'b', 'c'] or '{"a", "b", "c"}'. I'm going for the former
+  return imgArray.reduce((acc, el, i, arr) => {
+    if (i === arr.length - 1) {
+      acc += "'" + el + "'"
+    } else {
+      acc += "'" + el + "',";
+    }
+    return acc;
+  }, "");
+}
+
 function sqlifyTweet(tweet) {
   // formats a tweet's data into a valid SQL VALUES statement
   const { id, isRetweet, username, text, time, images, reply, retweet, favorite } = tweet;
 
-  // explicitly insert a null array if no images present
-  let imagesFormatted = `${images}`;
+  // explicitly insert a null array if no images are present
+  let imagesFormatted = sqlifyArray(images);
   if (imagesFormatted.length === 0) imagesFormatted = 'NULL';
 
   // make sure to escape single quotes in tweet text
