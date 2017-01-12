@@ -1,0 +1,21 @@
+{
+  "name": "trump-tweets",
+  "version": "1.0.0",
+  "description": "data viz & tracking of @realDonaldTrump's tweets",
+  "main": "index.js",
+  "scripts": {
+    "getLatestTweets": "node node_modules/twitter-screen-scrape/bin/index.js -u realDonaldTrump --no-retweets",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Henrick <chrishenrick@gmail.com> (http://clhenrick.io)",
+  "license": "ISC",
+  "dependencies": {
+    "cartodb": "^0.5.1",
+    "single-line-string": "0.0.1",
+    "twitter-screen-scrape": "^1.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clhenrick/trump-tweets.git"
+  }
+}
