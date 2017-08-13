@@ -10,6 +10,7 @@
   "author": "Chris Henrick <chrishenrick@gmail.com> (http://clhenrick.io)",
   "license": "ISC",
   "dependencies": {
+    "algorithmia": "^0.3.10",
     "cartodb": "^0.5.1",
     "single-line-string": "0.0.1",
     "twitter-screen-scrape": "^1.0.2"
